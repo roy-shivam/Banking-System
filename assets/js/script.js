@@ -1,7 +1,8 @@
 let myAccountBalance = parseInt(document.getElementById("myAccountBalance").innerText);
 
 function sendMoney(){
-   var enterName = document.getElementById("enterName").value;
+   var enterMail = document.getElementById("enterName").value;
+   var enterName = enterMail.split("@")[0];
    var enterAmount = parseInt(document.getElementById("enterAmount").value);
 
    if (enterAmount > 8000) {
@@ -17,7 +18,7 @@ function sendMoney(){
 
       // transaction history 
       var createPTag = document.createElement("li");
-      var textNode = document.createTextNode(`$${enterAmount} is sent to recepient with Email-id ${enterName}@email.com on ${Date()}.`);
+      var textNode = document.createTextNode(`$${enterAmount} is sent to recepient with Email-id ${enterMail} on ${new Date().toLocaleString()}.`);
       createPTag.appendChild(textNode);
       var element = document.getElementById("transaction-history-body");
       element.insertBefore(createPTag, element.firstChild);
